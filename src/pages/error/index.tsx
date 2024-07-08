@@ -157,9 +157,8 @@ function Icon() {
 }
 
 export const ErrorPage = () => {
-    const { getCookie } = useCookie();
-
-  const  cookieToken  = getCookie("access");
+  const {getCookie} = useCookie()
+  const cookieToken = getCookie("access_token")
 
   return (
     <div className="w-full h-screen flex flex-col lg:flex-row items-center justify-center space-y-16 lg:space-y-0 space-x-8 2xl:space-x-0">

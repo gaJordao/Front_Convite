@@ -1,25 +1,32 @@
-import {  useState } from "react";
+import { useState } from "react";
 import { ConfeteComponent } from "../../components";
 import { useNavigate } from "react-router-dom";
+import { useCookie } from "../../hooks";
 
 export function HomePage() {
+  const {getCookie} = useCookie()
+  const cookieToken = getCookie("access_token")
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const navigate = useNavigate();
 
-  const [isVisible, setIsVisible] = useState<boolean>(false)
-  const navigate = useNavigate()
-
-  function handleParticiar () {
-    setIsVisible(true)
+  function handleParticiar() {
+    setIsVisible(true);
 
     setTimeout(() => {
-      navigate("/lista")
-    }, 4000)
+      if (cookieToken) {
+        navigate("/lista");
+      } else {
+        navigate("/login");
+      }
+    }, 4000);
   }
-
 
   return (
     <main className="sm:bg-convite_desktop bg-convite_mobile bg-100% bg-no-repeat bg-center min-h-screen w-full text-white">
       <div className="flex justify-center items-center h-screen">
-        <div className="z-20">{isVisible && <ConfeteComponent isVisible={isVisible}/>}</div>
+        <div className="z-20">
+          {isVisible && <ConfeteComponent isVisible={isVisible} />}
+        </div>
 
         <div className="sm:flex-1"></div>
 
@@ -42,11 +49,13 @@ export function HomePage() {
             <span>Sábado Às 14h</span>
           </div>
 
-          <button className="bg-blue-400 w-60 h-9 rounded-md text-center" onClick={handleParticiar}>
+          <button
+            className="bg-blue-400 w-60 h-9 rounded-md text-center"
+            onClick={handleParticiar}
+          >
             {isVisible ? "Confetes!" : "Quero Participar!"}
           </button>
         </div>
-        
       </div>
     </main>
   );
