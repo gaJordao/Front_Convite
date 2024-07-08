@@ -1,109 +1,88 @@
-const itens = [
-  {
-    id: 1,
-    imagemUrl:
-      "https://goianita.vteximg.com.br/arquivos/ids/159074-1000-1000/Panela-22-Aluminio-Paris-Vermelha---Tramontina.jpg?v=637177182781830000",
-    descricao:
-      "Ela é utilizada para cozinhar alimentos em líquido, como água, caldos, ou molhos, além de ser usada para fritar, refogar e até mesmo assar alimentos. ",
-    valor: 200,
-    qtdPessoas: 2,
-  },
-  {
-    id: 2,
-    imagemUrl:
-      "https://goianita.vteximg.com.br/arquivos/ids/159074-1000-1000/Panela-22-Aluminio-Paris-Vermelha---Tramontina.jpg?v=637177182781830000",
-    descricao:
-      "A panela é um utensílio de cozinha essencial, geralmente feito de metal resistente ao calor, como alumínio, aço inoxidável ou ferro fundido.",
-    valor: 300,
-    qtdPessoas: 2,
-  },
-  {
-    id: 3,
-    imagemUrl:
-      "https://goianita.vteximg.com.br/arquivos/ids/159074-1000-1000/Panela-22-Aluminio-Paris-Vermelha---Tramontina.jpg?v=637177182781830000",
-    descricao:
-      "A panela é um utensílio de cozinha essencial, geralmente feito de metal resistente ao calor, como alumínio, aço inoxidável ou ferro fundido.",
-    valor: 300,
-    qtdPessoas: 2,
-  },
-  {
-    id: 3,
-    imagemUrl:
-      "https://goianita.vteximg.com.br/arquivos/ids/159074-1000-1000/Panela-22-Aluminio-Paris-Vermelha---Tramontina.jpg?v=637177182781830000",
-    descricao:
-      "A panela é um utensílio de cozinha essencial, geralmente feito de metal resistente ao calor, como alumínio, aço inoxidável ou ferro fundido.",
-    valor: 300,
-    qtdPessoas: 2,
-  },
-  {
-    id: 3,
-    imagemUrl:
-      "https://goianita.vteximg.com.br/arquivos/ids/159074-1000-1000/Panela-22-Aluminio-Paris-Vermelha---Tramontina.jpg?v=637177182781830000",
-    descricao:
-      "A panela é um utensílio de cozinha essencial, geralmente feito de metal resistente ao calor, como alumínio, aço inoxidável ou ferro fundido.",
-    valor: 300,
-    qtdPessoas: 2,
-  },
-  {
-    id: 3,
-    imagemUrl:
-      "https://goianita.vteximg.com.br/arquivos/ids/159074-1000-1000/Panela-22-Aluminio-Paris-Vermelha---Tramontina.jpg?v=637177182781830000",
-    descricao:
-      "A panela é um utensílio de cozinha essencial, geralmente feito de metal resistente ao calor, como alumínio, aço inoxidável ou ferro fundido.",
-    valor: 300,
-    qtdPessoas: 2,
-  },
-  {
-    id: 3,
-    imagemUrl:
-      "https://goianita.vteximg.com.br/arquivos/ids/159074-1000-1000/Panela-22-Aluminio-Paris-Vermelha---Tramontina.jpg?v=637177182781830000",
-    descricao:
-      "A panela é um utensílio de cozinha essencial, geralmente feito de metal resistente ao calor, como alumínio, aço inoxidável ou ferro fundido.",
-    valor: 300,
-    qtdPessoas: 2,
-  },
-  {
-    id: 3,
-    imagemUrl:
-      "https://goianita.vteximg.com.br/arquivos/ids/159074-1000-1000/Panela-22-Aluminio-Paris-Vermelha---Tramontina.jpg?v=637177182781830000",
-    descricao:
-      "A panela é um utensílio de cozinha essencial, geralmente feito de metal resistente ao calor, como alumínio, aço inoxidável ou ferro fundido.",
-    valor: 300,
-    qtdPessoas: 2,
-  },
-  {
-    id: 3,
-    imagemUrl:
-      "https://goianita.vteximg.com.br/arquivos/ids/159074-1000-1000/Panela-22-Aluminio-Paris-Vermelha---Tramontina.jpg?v=637177182781830000",
-    descricao:
-      "A panela é um utensílio de cozinha essencial, geralmente feito de metal resistente ao calor, como alumínio, aço inoxidável ou ferro fundido.",
-    valor: 300,
-    qtdPessoas: 2,
-  },
-];
+import { useEffect, useState } from "react";
+import { ItemListaType } from "../type";
+import axios from "axios";
+import { useCookie } from "../../hooks";
 
-export function ListaPage () {
-    return (
-        <main> 
-            <h1>Lista Page</h1>
+export function ListaPage() {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const { getCookie } = useCookie();
+  const cookieToken = getCookie("access_token");
+  const [dataItem, setDataItem] = useState<ItemListaType[]>([]);
 
-            <div className="flex flex-wrap gap-4 justify-center items-center h-[600px] overflow-auto">
-                {itens.map((item) => {
-                    return (
-                      <div className="bg-[#2a3155ad] flex flex-col sm:flex-row  max-w-[400px] h-auto">
-                        <div className="sm:w-80 h-40">
-                          <img className="h-full w-full" src={item.imagemUrl} alt={item.descricao} />
-                        </div>
+  async function handleGetListaItem() {
+    await axios
+      .get(`${backendUrl}/api/v1/lista/itens/`, {
+        headers: {
+          Authorization: `Bearer ${cookieToken}`,
+        },
+      })
+      .then((response) => {
+        const data: ItemListaType[] = response.data;
+        setDataItem(data);
+      })
+      .catch((error) => {
+        console.error("Não foi possivel encontrar lista de itens", error);
+      })
+      .finally(() => {
+        console.log("Final da busca de itens");
+      });
+  }
 
-                        <div className="flex flex-col">
-                          <span className="">{item.descricao}</span>
-                          <span>{item.valor}</span>
-                          <button>Realizar doação</button>
-                        </div>
-                      </div>
-                    );
-                })}
+  useEffect(() => {
+    handleGetListaItem();
+  }, []);
+
+  return (
+    <main className="h-[600px] overflow-auto">
+      <div className="flex justify-center m-5 text-3xl">
+        <h1 className="text-3xl text-ellipsis text-balance font-semibold leading-tight">
+          Lista de itens
+        </h1>
+      </div>
+
+      <div className="grid max-sm:grid-cols-1 grid-cols-3 gap-4 px-4">
+        {dataItem.map((item) => {
+          return (
+            <div
+              key={item.id}
+              className="max-w-md mx-auto bg-[#1f2336] rounded-xl shadow-md overflow-hidden md:max-w-2xl"
+            >
+              <div className="md:flex">
+                <div className="md:shrink-0 m-auto">
+                  <img
+                    className="max-h-48 w-full object-contain md:h-full md:w-48 m-auto"
+                    src={item.imagemUrl}
+                    alt={item.descricao}
+                  />
+                </div>
+                <div className="p-4 flex flex-col justify-between gap-4">
+                  <div className="flex flex-col">
+                  <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                    Descrição
+                  </div>
+                  <p className="block mt-1 text-lg leading-tight font-medium text-slate-300 hover:underline">
+                    {item.descricao}
+                  </p>
+                  <div className="mt-2 text-white">
+                    <strong>Valor da Doação: </strong>
+                    <span>
+                      {item.valor.toLocaleString("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                      })}
+                    </span>
+                  </div>
+                  </div>
+
+                  <button className="mt-2 bg-cinza-claro hover:bg-[#505057] p-3 rounded-md text-lg font-medium text-ellipsis">
+                    Realizar doação
+                  </button>
+                </div>
+              </div>
             </div>
-        </main>
-    )
+          );
+        })}
+      </div>
+    </main>
+  );
 }
