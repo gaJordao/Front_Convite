@@ -131,7 +131,7 @@ export function CadastroPage() {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col items-center justify-center bg-escuro rounded-[2rem] drop-shadow-2xl gap-[4rem] w-[22rem] h-[42rem] sm:w-[30rem]"
       >
-        <h1 className="text-[2.5rem] font-bold mt-[-3rem] text-gray-300">
+        <h1 className="text-[2.5rem] font-bold mt-[-3rem] text-gray-300 font-cantora">
           Cadastro
         </h1>
 

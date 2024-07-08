@@ -14,7 +14,7 @@ export function HomePage() {
 
     setTimeout(() => {
       if (cookieToken) {
-        navigate("/lista");
+        navigate("/presente");
       } else {
         navigate("/login");
       }
@@ -22,7 +22,7 @@ export function HomePage() {
   }
 
   return (
-    <main className="sm:bg-convite_desktop bg-convite_mobile bg-100% bg-no-repeat bg-center min-h-screen w-full text-white">
+    <main className="sm:bg-convite_desktop bg-convite_mobile bg-100% bg-no-repeat bg-center min-h-screen w-full text-white font-cantora">
       <div className="flex justify-center items-center h-screen">
         <div className="z-20">
           {isVisible && <ConfeteComponent isVisible={isVisible} />}
@@ -31,10 +31,10 @@ export function HomePage() {
         <div className="sm:flex-1"></div>
 
         <div className="sm:flex-1 flex flex-col justify-center items-center text-center h-full gap-4">
-          <h1 className="text-6xl text-wrap font-medium text-ellipsis">
+          <h1 className="text-6xl text-wrap font-medium text-ellipsis font-tropika">
             Chá de Casa nova
           </h1>
-          <span className="text-4xl font-thin text-ellipsis text-wrap">
+          <span className="text-4xl font-thin text-ellipsis text-wrap font-tropika">
             Isabela e Pablo
           </span>
 
@@ -43,14 +43,14 @@ export function HomePage() {
             Nova. Sua presença tornará este momento ainda mais especial!
           </p>
 
-          <div>
+          <div className="text-xl">
             <span>20 de Julho</span>
             <hr />
             <span>Sábado Às 14h</span>
           </div>
 
           <button
-            className="bg-blue-400 w-60 h-9 rounded-md text-center"
+            className="bg-blue-400 w-60 rounded-md text-center p-3 text-xl font-semibold font-cantora"
             onClick={handleParticiar}
           >
             {isVisible ? "Confetes!" : "Quero Participar!"}

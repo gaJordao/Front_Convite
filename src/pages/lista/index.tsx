@@ -34,10 +34,12 @@ export function ListaPage() {
 
   return (
     <main className="h-[600px] overflow-auto">
-      <div className="flex justify-center m-5 text-3xl">
-        <h1 className="text-3xl text-ellipsis text-balance font-semibold leading-tight">
-          Lista de itens
+      <div className="flex flex-col items-center justify-center m-5 text-3xl gap-2">
+        <h1 className="text-3xl text-ellipsis text-balance font-semibold leading-tight  font-cantora">
+          Lista de Presentes
         </h1>
+
+        <hr className="w-1/3 h-2"/>
       </div>
 
       <div className="grid max-sm:grid-cols-1 grid-cols-3 gap-4 px-4">
@@ -64,7 +66,7 @@ export function ListaPage() {
                     {item.descricao}
                   </p>
                   <div className="mt-2 text-white">
-                    <strong>Valor da Doação: </strong>
+                    <strong>Valor do presente: </strong>
                     <span>
                       {item.valor.toLocaleString("pt-BR", {
                         style: "currency",
@@ -75,7 +77,7 @@ export function ListaPage() {
                   </div>
 
                   <button className="mt-2 bg-cinza-claro hover:bg-[#505057] p-3 rounded-md text-lg font-medium text-ellipsis">
-                    Realizar doação
+                      Presentear
                   </button>
                 </div>
               </div>

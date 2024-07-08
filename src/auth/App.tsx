@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
       {
-        path: "/lista",
+        path: "/presente",
         Component: ListaPage,
         loader: protectedLoader,
         errorElement: <ErrorPage />,

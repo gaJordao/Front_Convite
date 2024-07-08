@@ -87,8 +87,8 @@ export function LoginPage() {
         className="flex flex-col items-center justify-center bg-escuro rounded-[2rem] drop-shadow-2xl gap-[4rem] h-[40rem] w-[22rem] sm:w-[30rem]"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1 className="text-[2.5rem] font-bold mt-[-3rem] text-gray-300">
-          Logar
+        <h1 className="text-[2.5rem] font-bold mt-[-3rem] text-gray-300 font-cantora">
+          Realizar Login
         </h1>
 
         <div className="flex flex-col gap-6 items-center w-[100%]">

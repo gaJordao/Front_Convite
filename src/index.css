@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Tropika";
+  src: url("../public/fonts/Aiyari\ -\ Tropika\ Island\ Int.otf");
+}
+
+@font-face {
+    font-family: "Cantora";
+    src: url("../public/fonts/CantoraOne-Regular.ttf");
+  }
+
 body {
     overflow: hidden;
 }
+
