@@ -1,6 +1,5 @@
 import { LoaderFunctionArgs, RouterProvider, createBrowserRouter, redirect } from "react-router-dom";
-import { ErrorPage, HomePage, LayoutPage, ListaPage, LoginPage } from "../pages";
-import { CadastroPage } from "../pages/cadastro";
+import { CadastroPage, ErrorPage, HomePage, LayoutPage, ListaPresentePage, LoginPage, PresentePage } from "../pages";
 import { useCookie } from "../hooks";
 import { AuthProvider } from "./Auth";
 
@@ -42,7 +41,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/presente",
-        Component: ListaPage,
+        Component: ListaPresentePage,
+        loader: protectedLoader,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/presente/:id",
+        Component: PresentePage,
         loader: protectedLoader,
         errorElement: <ErrorPage />,
       },

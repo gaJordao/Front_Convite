@@ -23,3 +23,21 @@ export type ItemListaType = {
     criacao: string
     doacoes: DoacaoType[]
 }
+
+export type QrcodeResponseType = {
+    nome: string;
+    chavepix: string;
+    valor: string;
+    cidade: string;
+    txtId: string;
+    payload: string;
+  };
+  
+export type DecodedTokenType = {
+    exp: number;
+    iat: number;
+    jti: string;
+    token_type: string;
+    user_id: React.Key;
+  };
+  
