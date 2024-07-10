@@ -2,6 +2,7 @@ import { LoaderFunctionArgs, RouterProvider, createBrowserRouter, redirect } fro
 import { CadastroPage, ErrorPage, HomePage, LayoutPage, ListaPresentePage, LoginPage, PresentePage } from "../pages";
 import { useCookie } from "../hooks";
 import { AuthProvider } from "./Auth";
+import { CadastroInformacao } from "../pages/cadastroInformacao";
 
 const router = createBrowserRouter([
   {
@@ -26,11 +27,34 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
+    id: "cadastro",
+    path: "/cad/",
+    Component: LayoutPage,
+    children: [
+      {
+        path: "comida",
+        loader: protectedLoader,
+        element: <CadastroInformacao action="comida-tipica" />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "acompanhante",
+        loader: protectedLoader,
+        element: <CadastroInformacao action="cadastro-acompanhante" />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "presente",
+        loader: protectedLoader,
+        element: <CadastroInformacao action="cadastro-presente" />,
+        errorElement: <ErrorPage />,
+      },
+    ],
+    errorElement: <ErrorPage />,
+  },
+  {
     id: "root",
     path: "/",
-    loader() {
-      return { usuario: "Luis" };
-    },
     Component: LayoutPage,
     children: [
       {
