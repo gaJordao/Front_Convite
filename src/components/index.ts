@@ -1,2 +1,6 @@
 export * from "./ConfeteComponent"
+export * from "./AdicionarAcompanhante"
+export * from "./AdicionarComida"
+export * from "./CadastroPresente"
+export * from "./CadastroUsuario"
 export * from "./PresenteItem"

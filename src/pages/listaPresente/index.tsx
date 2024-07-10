@@ -12,7 +12,7 @@ export function ListaPresentePage() {
 
   async function handleGetListaItem() {
     await axios
-      .get(`https://gajordao.pythonanywhere.com/api/v1/lista/itens/`, {
+      .get(`${backendUrl}/api/v1/lista/itens/`, {
         headers: {
           Authorization: `Bearer ${cookieToken}`,
         },
@@ -51,5 +51,4 @@ export function ListaPresentePage() {
     </main>
   );
 }
-
 
