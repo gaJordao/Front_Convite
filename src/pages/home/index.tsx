@@ -83,7 +83,11 @@ export function HomePage() {
 
               <button
                 className="bg-blue-400 w-60 rounded-md text-center p-3 text-xl font-semibold font-cantora"
-                onClick={deleteAllCookies}
+                onClick={() => {
+                  deleteAllCookies()
+
+                  window.location.reload()
+                }}
               >
                 Sair
               </button>
