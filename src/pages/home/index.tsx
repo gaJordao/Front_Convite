@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useCookie } from "../../hooks";
 
 export function HomePage() {
-  const {getCookie} = useCookie()
+  const {getCookie, deleteAllCookies} = useCookie()
   const cookieToken = getCookie("access_token")
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -64,7 +64,7 @@ export function HomePage() {
               >
                 Lista de Presentes
               </NavLink>
-              
+
               <NavLink
                 to={"/cad/acompanhante"}
                 className="bg-blue-400 w-60 rounded-md text-center p-3 text-xl font-semibold font-cantora"
@@ -80,6 +80,13 @@ export function HomePage() {
               >
                 Comida Típica
               </NavLink>
+
+              <button
+                className="bg-blue-400 w-60 rounded-md text-center p-3 text-xl font-semibold font-cantora"
+                onClick={deleteAllCookies}
+              >
+                Sair
+              </button>
             </div>
           )}
         </div>
