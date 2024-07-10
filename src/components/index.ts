@@ -1,5 +1,2 @@
 export * from "./ConfeteComponent"
 export * from "./PresenteItem"
-export * from "./AdicionarAcompanhante"
-export * from "./AdicionarComida"
-export * from "./CadastroUsuario"

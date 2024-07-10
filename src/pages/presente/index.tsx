@@ -50,7 +50,7 @@ export function PresentePage() {
         .replace(",", ".");
 
       await axios
-        .get(`${backendUrl}/api/v1/pagamento/pix`, {
+        .get(`https://gajordao.pythonanywhere.com/api/v1/pagamento/pix`, {
           params: {
             nome: "ISABELA MANCINI DA SILVA",
             chavepix: "isabelamancini903@gmail.com",
@@ -86,7 +86,7 @@ export function PresentePage() {
     };
 
     await axios
-      .post(`${backendUrl}/api/v1/doar/`, data, {
+      .post(`https://gajordao.pythonanywhere.com/api/v1/doar/`, data, {
         headers: {
           Authorization: `Bearer ${cookieToken}`,
         },

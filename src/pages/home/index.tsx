@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ConfeteComponent } from "../../components";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useCookie } from "../../hooks";
 
 export function HomePage() {
@@ -14,7 +14,7 @@ export function HomePage() {
 
     setTimeout(() => {
       if (cookieToken) {
-        // navigate("/presente");
+        navigate("/presente");
       } else {
         navigate("/login");
       }
@@ -49,41 +49,12 @@ export function HomePage() {
             <span>Sábado Às 14h</span>
           </div>
 
-          {!cookieToken && (
-            <button
-              className="bg-blue-400 w-60 rounded-md text-center p-3 text-xl font-semibold font-cantora"
-              onClick={handleParticiar}
-            >
-              {isVisible ? "Confetes!" : "Quero Participar!"}
-            </button>
-          )}
-
-          {cookieToken && (
-            <div className="flex flex-col flex-wrap gap-4">
-              <NavLink
-                to={"/presente"}
-                className="bg-blue-400 w-60 rounded-md text-center p-3 text-xl font-semibold font-cantora"
-              >
-                Lista de Presentes
-              </NavLink>
-              
-              <NavLink
-                to={"/cad/acompanhante"}
-                className="bg-blue-400 w-60 rounded-md text-center p-3 text-xl font-semibold font-cantora"
-                onClick={handleParticiar}
-              >
-                Acompanhantes
-              </NavLink>
-
-              <NavLink
-                to={"/cad/comida"}
-                className="bg-blue-400 w-60 rounded-md text-center p-3 text-xl font-semibold font-cantora"
-                onClick={handleParticiar}
-              >
-                Comida Típica
-              </NavLink>
-            </div>
-          )}
+          <button
+            className="bg-blue-400 w-60 rounded-md text-center p-3 text-xl font-semibold font-cantora"
+            onClick={handleParticiar}
+          >
+            {isVisible ? "Confetes!" : "Quero Participar!"}
+          </button>
         </div>
       </div>
     </main>
