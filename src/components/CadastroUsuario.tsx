@@ -13,6 +13,8 @@ type FormDataType = {
 };
 
 export function CadastroUsuario() {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
+
   const schema = z.object({
     nome: z.string().max(60, "Máximo 60 caracteres").optional(),
     email: z
@@ -43,7 +45,7 @@ export function CadastroUsuario() {
 
   const handleCriarUsuario = async (data: FormDataType) => {
     await axios
-      .post("http://127.0.0.1:8000/api/v1/add/usuario/", {
+      .post(`${backendUrl}/api/v1/add/usuario/`, {
         username: data.nome,
         email: data.email,
         password: data.password,

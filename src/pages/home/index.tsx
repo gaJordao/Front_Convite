@@ -13,9 +13,7 @@ export function HomePage() {
     setIsVisible(true);
 
     setTimeout(() => {
-      if (cookieToken) {
-        // navigate("/presente");
-      } else {
+      if (!cookieToken) {
         navigate("/login");
       }
     }, 4000);
