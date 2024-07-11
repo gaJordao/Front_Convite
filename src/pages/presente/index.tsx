@@ -115,7 +115,7 @@ export function PresentePage() {
   if (dataPresente)
     return (
       <main className="flex justify-center items-center">
-        <section className="py-8 b md:py-16  antialiased">
+        <section className="py-8 b md:py-16 antialiased">
           <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
             <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
               <div className="shrink-0 max-w-md lg:max-w-lg mx-auto">
@@ -138,7 +138,7 @@ export function PresentePage() {
                   </p>
                 </div>
 
-                <div className="mt-6 sm:gap-4 sm:items-center sm:flex sm:mt-8">
+                <div className="flex max-sm:flex-col justify-center items-center gap-4 mt-6">
                   <button
                     title=""
                     className="flex items-center justify-center py-2.5 px-5 gap-2 text-sm font-medium focus:outline-none rounded-lg border  focus:z-10 focus:ring-4 focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700"
@@ -151,7 +151,7 @@ export function PresentePage() {
                   <a
                     href="/presente"
                     title=""
-                    className="text-white mt-4 sm:mt-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  focus:outline-none flex items-center justify-center"
+                    className="flex items-center justify-center py-2.5 px-5 gap-2 text-sm font-medium focus:outline-none rounded-lg border  focus:z-10 focus:ring-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 "
                     role="button"
                   >
                     <CaretLeft size={24} />
@@ -162,7 +162,7 @@ export function PresentePage() {
                 <hr className="my-6 md:my-8 border-gray-200" />
 
                 {dataQrcodePix && (
-                  <>
+                  <div className="flex flex-col">
                     <div className="flex flex-col justify-center items-center">
                       <QRCode
                         value={dataQrcodePix.payload}
@@ -175,11 +175,22 @@ export function PresentePage() {
                       onClick={() =>
                         navigator.clipboard.writeText(dataQrcodePix.payload)
                       }
-                      className="mt-6 text-gray-400 break-words text-center"
+                      className="mt-6 text-gray-400 break-words text-center max-sm:hidden"
                     >
                       {dataQrcodePix.payload}
                     </p>
-                  </>
+
+                    <button
+                    title=""
+                    className="sm:hidden mt-6 py-2.5 px-5 text-sm font-medium focus:outline-none rounded-lg border  focus:z-10 focus:ring-4 focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700"
+                    role="button"
+                    onClick={() =>
+                      navigator.clipboard.writeText(dataQrcodePix.payload)
+                    }
+                  >
+                    Chave "COPIA E COLA"
+                  </button>
+                  </div>
                 )}
               </div>
             </div>
