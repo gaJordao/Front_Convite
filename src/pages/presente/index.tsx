@@ -50,7 +50,7 @@ export function PresentePage() {
         .replace(",", ".");
 
       await axios
-        .get(`${backendUrl}/api/v1/pagamento/pix`, {
+        .get(`${backendUrl}/api/v1/pagamento/pix/`, {
           params: {
             nome: "ISABELA MANCINI DA SILVA",
             chavepix: "isabelamancini903@gmail.com",
