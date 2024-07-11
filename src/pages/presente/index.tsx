@@ -114,7 +114,7 @@ export function PresentePage() {
 
   if (dataPresente)
     return (
-      <main className="flex justify-center items-center">
+      <main className="flex justify-center items-center overflow-auto h-screen">
         <section className="py-8 b md:py-16 antialiased">
           <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
             <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
