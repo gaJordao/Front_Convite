@@ -21,7 +21,7 @@ export function PresentePage() {
 
   async function handleGetItem() {
     await axios
-      .get(`${backendUrl}/api/v1/item/${id}`, {
+      .get(`${backendUrl}/api/v1/item/${id}/`, {
         headers: {
           Authorization: `Bearer ${cookieToken}`,
         },
