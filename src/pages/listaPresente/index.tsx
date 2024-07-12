@@ -43,7 +43,7 @@ export function ListaPresentePage() {
         <hr className="w-1/3 h-2"/>
       </div>
 
-      <div className="grid max-sm:grid-cols-1 grid-cols-3 gap-4 px-4">
+      <div className="grid max-sm:grid-cols-1 grid-cols-3 gap-4 px-4 h-[100%]">
         {dataItem.map((item) => {
           return <PresenteItem data={item} key={item.id}/>
         })}
